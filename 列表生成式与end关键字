@@ -1,0 +1,48 @@
+##  一、关于end关键字
+
+#  1、关键字end可以用于将结果输出到同一行，或者在输出的末尾添加不同的字符
+a,b = 0,1
+while b < 1000:
+    print(b,end = ",")
+    a,b = b,a + b
+#  结果为：1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+
+
+
+
+##  二、列表生成式
+
+#  1、列表生成式多用于生成复杂的列表，公式参考为：[ X1 * X2 for X1 in 范围1 for X2 in 范围2 ]，式中 * 可以为加减乘除等
+
+#  （1）用列表生成式来生成全排列
+list_1 = [m * n for m in range(1,10) for n in range(2,4) ]
+list_2 = [m + n for m in "ABC" for n in "abc"]
+print(list_1,list_2)
+#  结果为：[2, 3, 4, 6, 6, 9, 8, 12, 10, 15, 12, 18, 14, 21, 16, 24, 18, 27] ['Aa', 'Ab', 'Ac', 'Ba', 'Bb', 'Bc', 'Ca', 'Cb', 'Cc']
+
+#  （2）用列表生成式来实现平方
+list_3 = [m * m for m in range(1,10) ]
+print(list_3)
+#  结果为：[1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+#  （3）在列表生成式中使用变量
+value_1 = {"X":"a","Y":"b","Z":"c"}
+list_4 = [m + " = " + n for m,n in value_1.items()]
+print(list_4)
+#  结果为：['X = a', 'Y = b', 'Z = c']
+
+#  （4）在列表生成式中使用函数
+value_2 = ["Help","Hello","THE PEOPLE WHO I LOVE SO MUCH"]
+list_5 = [m.lower() for m in value_2]
+print(list_5)
+#  结果为：['help', 'hello', 'the people who i love so much']
+
+#  （5）在列表生成式中使用if作为过滤条件
+list_6 = [m * m for m in range(1,11) if m % 2 ==0]
+print(list_6)
+#  结果为：[4, 16, 36, 64, 100]
+
+#  （6）在列表生成式中使用表达式（即if else控制语句）
+list_7 = [m if m % 2 == 0 else -m for m in range(1,11)]    #  当m除以2余数为0时，取值为m；反之则取值为-m；m的值的范围在（1,11）
+print(list_7)
+#  结果为：[-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]
